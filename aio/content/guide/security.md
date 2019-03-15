@@ -168,7 +168,7 @@ HTML constructed on the server is vulnerable to injection attacks. Injecting tem
 Angular application is the same as injecting executable code into the
 application: it gives the attacker full control over the application. To prevent this,
 use a templating language that automatically escapes values to prevent XSS vulnerabilities on
-the server. Don't generate Angular templates on the server side using a templating language; doing this
+the server. Don't generate Angular templates on the server-side using a templating language; doing this
 carries a high risk of introducing template-injection vulnerabilities.
 
 
@@ -241,6 +241,9 @@ Angular to allow binding into `<iframe src>`:
 
 </code-example>
 
+### Use the correct template syntax
+
+Angular offers in-built protection against XSS, however it's important to use the correct [template syntax](https://angular.io/guide/template-syntax) when handling input controlled by users. If input which is only intended to be displayed as text, is shown through an `[innerHTML]` property bind; this would allow for valid HTML to be inserted into the page, which could be used to inject malicious third-party links, and HTML which is used to make it appear as valid application mark-up in attempts of deception.  
 
 
 
@@ -252,7 +255,7 @@ Angular to allow binding into `<iframe src>`:
 
 Angular has built-in support to help prevent two common HTTP vulnerabilities, cross-site request
 forgery (CSRF or XSRF) and cross-site script inclusion (XSSI). Both of these must be mitigated primarily
-on the server side, but Angular provides helpers to make integration on the client side easier.
+on the server-side, but Angular provides helpers to make integration on the client-side easier.
 
 
 <h3 id='xsrf'>
@@ -331,4 +334,4 @@ post](https://security.googleblog.com/2011/05/website-security-for-webmasters.ht
 Angular applications must follow the same security principles as regular web applications, and
 must be audited as such. Angular-specific APIs that should be audited in a security review,
 such as the [_bypassSecurityTrust_](guide/security#bypass-security-apis) methods, are marked in the documentation
-as security sensitive.
+as security sensitive. 
